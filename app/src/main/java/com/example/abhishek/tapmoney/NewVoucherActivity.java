@@ -2,6 +2,7 @@ package com.example.abhishek.tapmoney;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,7 +40,7 @@ public class NewVoucherActivity extends ActionBarActivity {
     public void postNewVoucher() {
         // Create a new HttpClient and Post Header
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("http://postcatcher.in/catchers/5549ee7faa49d20300007b30");
+        HttpPost httppost = new HttpPost("url");
 
         try {
             // Add your data
@@ -49,12 +50,12 @@ public class NewVoucherActivity extends ActionBarActivity {
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
             nameValuePairs.add(new BasicNameValuePair("value", val.getText().toString()));
             nameValuePairs.add(new BasicNameValuePair("expiry", exp.getText().toString()));
-            nameValuePairs.add(new BasicNameValuePair("userId", String.valueOf(MainActivity.wallet.userId)));
+            nameValuePairs.add(new BasicNameValuePair("userid", String.valueOf(MainActivity.wallet.userId)));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
             // Execute HTTP Post Request
             HttpResponse response = httpclient.execute(httppost);
-
+            Log.d("t2p",org.apache.http.util.EntityUtils.toString(response.getEntity()));
         } catch (ClientProtocolException e) {
             Toast.makeText(this, "Check your internet", Toast.LENGTH_LONG).show();
             // TODO Auto-generated catch block

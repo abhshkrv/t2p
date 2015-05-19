@@ -8,19 +8,34 @@ import android.nfc.NfcEvent;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Parcelable;
+import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
 
 import static android.nfc.NdefRecord.createMime;
 
@@ -32,6 +47,10 @@ public class NfcSendActivity extends ActionBarActivity  implements NfcAdapter.Cr
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nfc_send);
+        ImageView tick = (ImageView) findViewById(R.id.successtick);
+        TextView success = (TextView) findViewById(R.id.successmsg);
+        tick.setVisibility(View.INVISIBLE);
+        success.setVisibility(View.INVISIBLE);
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if (mNfcAdapter == null) {
             Toast.makeText(this, "NFC is not available", Toast.LENGTH_LONG).show();
@@ -68,7 +87,7 @@ public class NfcSendActivity extends ActionBarActivity  implements NfcAdapter.Cr
                          * activity starts when receiving a beamed message. For now, this code
                          * uses the tag dispatch system.
                          */
-                        //,NdefRecord.createApplicationRecord("com.example.abhishek.tapmoney")
+                        ,NdefRecord.createApplicationRecord("com.example.abhishek.tapmoney")
                 });
         //Toast.makeText(this, text, Toast.LENGTH_LONG).show();
         return msg;
@@ -82,7 +101,11 @@ public class NfcSendActivity extends ActionBarActivity  implements NfcAdapter.Cr
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case MESSAGE_SENT:
-                    Toast.makeText(getApplicationContext(), "Message sent!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Gyft sent!", Toast.LENGTH_LONG).show();
+                    ImageView tick = (ImageView) findViewById(R.id.successtick);
+                    TextView success = (TextView) findViewById(R.id.successmsg);
+                    tick.setVisibility(View.VISIBLE);
+                    success.setVisibility(View.VISIBLE);
                     break;
             }
         }
@@ -97,6 +120,42 @@ public class NfcSendActivity extends ActionBarActivity  implements NfcAdapter.Cr
         // A handler is needed to send messages to the activity when this
         // callback occurs, because it happens from a binder thread
         mHandler.obtainMessage(MESSAGE_SENT).sendToTarget();
+
+        HttpClient httpclient = new DefaultHttpClient();
+        HttpPost httppost = new HttpPost("url");
+
+        try {
+            // Add your data
+            //EditText val = (EditText) findViewById(R.id.editText);
+            //EditText exp = (EditText) findViewById(R.id.editText2);
+
+            int id= getIntent().getIntExtra("voucherID",404);
+            Voucher voucher = new Voucher();
+            if(id==404) {
+                Log.d("t2p", "Error!");
+            }
+            else {
+                voucher = MainActivity.wallet.getVoucherById(id);
+            }
+
+
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+            nameValuePairs.add(new BasicNameValuePair("voucherid", String.valueOf(voucher.getId())));
+            //nameValuePairs.add(new BasicNameValuePair("expiry", exp.getText().toString()));
+            nameValuePairs.add(new BasicNameValuePair("userid", String.valueOf(MainActivity.wallet.userId==1?2:1)));
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+            // Execute HTTP Post Request
+            HttpResponse response = httpclient.execute(httppost);
+            Log.d("t2p",org.apache.http.util.EntityUtils.toString(response.getEntity()));
+        } catch (ClientProtocolException e) {
+            Toast.makeText(this, "Check your internet", Toast.LENGTH_LONG).show();
+            // TODO Auto-generated catch block
+        } catch (IOException e) {
+            Toast.makeText(this, "Check your internet", Toast.LENGTH_LONG).show();
+            // TODO Auto-generated catch block
+        }
     }
     @Override
     public void onResume() {

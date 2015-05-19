@@ -1,64 +1,62 @@
 package com.example.abhishek.tapmoney;
 
-import java.util.Date;
-
 /**
  * Created by Abhishek on 13/5/2015.
  */
 public class Voucher {
 
-    public int Id ;
-    public String Pan ;
-    public double Value ;
-    public String Expiry ;
-    public int BuyerId ;
-    public int OwnerId ;
+    public int id;
+    public String pan;
+    public double value;
+    public String expiry;
+    public int buyerid;
+    public int ownerid;
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getPan() {
-        return Pan;
+        return pan;
     }
 
     public void setPan(String pan) {
-        Pan = pan;
+        this.pan = pan;
     }
 
     public double getValue() {
-        return Value;
+        return value;
     }
 
     public void setValue(double value) {
-        Value = value;
+        this.value = value;
     }
 
     public String getExpiry() {
-        return Expiry;
+        return expiry;
     }
 
     public void setExpiry(String expiry) {
-        Expiry = expiry;
+        this.expiry = expiry;
     }
 
-    public int getBuyerId() {
-        return BuyerId;
+    public int getBuyerid() {
+        return buyerid;
     }
 
-    public void setBuyerId(int buyerId) {
-        BuyerId = buyerId;
+    public void setBuyerid(int buyerid) {
+        this.buyerid = buyerid;
     }
 
-    public int getOwnerId() {
-        return OwnerId;
+    public int getOwnerid() {
+        return ownerid;
     }
 
-    public void setOwnerId(int ownerId) {
-        OwnerId = ownerId;
+    public void setOwnerid(int ownerid) {
+        this.ownerid = ownerid;
     }
 }

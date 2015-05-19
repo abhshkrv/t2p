@@ -1,15 +1,16 @@
 <resources>
-    <string name="app_name">TapMoney</string>
-    <string name="my_vouchers">My Vouchers</string>
-    <string name="new_voucher">New Voucher</string>
+    <string name="app_name">GYFT</string>
+    <string name="my_vouchers">My Gyfts</string>
+    <string name="new_voucher">New Gyft</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_buy_voucher">Buy a voucher</string>
+    <string name="title_activity_buy_voucher">Buy a gyft</string>
     <string name="buy_button">Buy</string>
     <string name="value">Value ($)</string>
     <string name="send">Send</string>
     <string name="title_activity_beam">Send</string>
     <string name="title_activity_login">Send</string>
-    <string name="title_activity_nfc_send">Sending</string>
-    <string name="tap_ins"> Tap another NFC enabled phone here</string>
+    <string name="title_activity_nfc_send">Gyfting</string>
+    <string name="tap_ins"> Tap a friend\'s phone</string>
+    <string name="title_activity_pay_wave">PayWaveActivity</string>
 </resources>
