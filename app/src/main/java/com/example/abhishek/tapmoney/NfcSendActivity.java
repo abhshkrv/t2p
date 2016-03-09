@@ -59,6 +59,7 @@ public class NfcSendActivity extends ActionBarActivity  implements NfcAdapter.Cr
         }
         // Register callback
         int id= getIntent().getIntExtra("voucherID",404);
+        //Toast.makeText(this, id, Toast.LENGTH_LONG).show();
         Voucher voucher = MainActivity.wallet.getVoucherById(id);
         Gson g = new Gson();
         String jsonString = g.toJson(voucher);
@@ -122,7 +123,7 @@ public class NfcSendActivity extends ActionBarActivity  implements NfcAdapter.Cr
         mHandler.obtainMessage(MESSAGE_SENT).sendToTarget();
 
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("url");
+        HttpPost httppost = new HttpPost("http://tapmoney-abhshkrv.c9.io/send_voucher_hack.php");
 
         try {
             // Add your data

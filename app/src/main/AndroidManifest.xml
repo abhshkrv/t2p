@@ -15,7 +15,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name=".CardListActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,19 +31,12 @@
             android:name=".NfcSendActivity"
             android:label="Gyfting" >
         </activity>
-        <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login"
-            android:windowSoftInputMode="adjustResize|stateVisible" >
-        </activity>
-        <activity
-            android:name=".Beam"
-            android:label="@string/title_activity_beam" >
-        </activity>
+
         <activity
             android:name=".PayWaveActivity"
             android:label="payWave" >
         </activity>
+
     </application>
 
 </manifest>

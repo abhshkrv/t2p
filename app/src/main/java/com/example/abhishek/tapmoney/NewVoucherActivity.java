@@ -25,6 +25,7 @@ import java.util.List;
 
 public class NewVoucherActivity extends ActionBarActivity {
 
+    public static int isBuying = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +41,7 @@ public class NewVoucherActivity extends ActionBarActivity {
     public void postNewVoucher() {
         // Create a new HttpClient and Post Header
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("url");
+        HttpPost httppost = new HttpPost("http://tapmoney-abhshkrv.c9.io/create_voucher.php");
 
         try {
             // Add your data

@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.abhishek.tapmoney.CardListActivity">
+    <item android:id="@+id/action_new_gyft" android:title="New GYFT"
+        android:icon="@drawable/plus"
+        android:orderInCategory="100" app:showAsAction="always" />
+    <item android:id="@+id/action_refresh" android:title="Refresh" android:icon="@drawable/sync_icon"
+        android:orderInCategory="100" app:showAsAction="always" />
+
+</menu>

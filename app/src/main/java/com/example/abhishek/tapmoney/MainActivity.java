@@ -11,17 +11,14 @@ import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.os.Debug;
+import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -30,7 +27,6 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.google.gson.Gson;
 
 import org.apache.http.HttpEntity;
@@ -40,12 +36,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
-import javax.xml.validation.Validator;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -57,6 +47,8 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+        Intent intent = new Intent(this, CardListActivity.class);
+        startActivity(intent);
         reDrawVouchers();
         /*Button beamButton = (Button) findViewById(R.id.send1);
         beamButton.setOnClickListener(new View.OnClickListener() {
@@ -75,6 +67,11 @@ public class MainActivity extends ActionBarActivity {
     {
        Intent intent = new Intent(this, NewVoucherActivity.class);
        startActivity(intent);
+    }
+    public void newScreen(View view)
+    {
+        Intent intent = new Intent(this, CardListActivity.class);
+        startActivity(intent);
     }
     private void cleanTable(TableLayout table) {
 
@@ -128,20 +125,7 @@ public class MainActivity extends ActionBarActivity {
             if(voucher.getBuyerid()==wallet.userId||voucher.getOwnerid()==wallet.userId) {
                 tr_head.addView(t);
             }
-            //TextView label_date = new TextView(this);
-            //label_date.setId(voucher.getId());
-            //label_date.setText(voucher.getPan());
-            //label_date.setTextColor(Color.WHITE);
-            //label_date.setPadding(5, 5, 5, 5);
-            //tr_head.addView(label_date);// add the column to the table row here
-/*
-            TextView label_weight_kg = new TextView(this);
-            label_weight_kg.setId(voucher.getId() * 10);// define id that must be unique
-            label_weight_kg.setText(String.valueOf(voucher.getValue())+" $"); // set the text for the header
-            label_weight_kg.setTextColor(Color.WHITE); // set the color
-            label_weight_kg.setPadding(5, 5, 5, 5); // set the padding (if required)
-            tr_head.addView(label_weight_kg); // add the column to the table row here
-*/
+
             LinearLayout LL = new LinearLayout(this);
             LL.setBackgroundColor(Color.CYAN);
             LL.setOrientation(LinearLayout.VERTICAL);
@@ -249,7 +233,7 @@ public class MainActivity extends ActionBarActivity {
 
         String output;
         //String url = "https://gist.githubusercontent.com/abhshkrv/dedeb1b6a61b7430c34d/raw/eb87a2dce3bb41a2f9acb3a1694db1141a0468ef/gistfile1.txt";
-        String url = "url";
+        String url = "http://tapmoney-abhshkrv.c9.io/get_vouchers.php";
         try {
             DefaultHttpClient httpClient = new DefaultHttpClient();
             HttpGet httpGet = new HttpGet(url);

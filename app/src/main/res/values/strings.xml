@@ -13,4 +13,5 @@
     <string name="title_activity_nfc_send">Gyfting</string>
     <string name="tap_ins"> Tap a friend\'s phone</string>
     <string name="title_activity_pay_wave">PayWaveActivity</string>
+    <string name="title_activity_card_list">CardListActivity</string>
 </resources>

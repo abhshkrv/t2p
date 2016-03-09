@@ -46,10 +46,9 @@
                 android:layout_column="0"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="30dp"
+                android:elevation="20dp"
                 android:onClick="newVoucher"
-                bootstrap:bb_roundedCorners="true"
-                bootstrap:bb_type="primary"
-                bootstrap:bb_icon_left="fa-plus-circle"
+
 
                 android:layout_weight="1" />
 
@@ -57,13 +56,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
+                android:elevation="20dp"
                 android:text="Refresh"
                 android:id="@+id/button3"
-                android:onClick="refreshData"
+                android:onClick="newScreen"
 
-                bootstrap:bb_roundedCorners="true"
-                bootstrap:bb_icon_left="fa-refresh"
-                bootstrap:bb_type="success"/>
+             />
 
         </TableRow>
 
