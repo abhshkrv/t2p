@@ -10,7 +10,8 @@ import java.util.ArrayList;
 public class Wallet {
 
     ArrayList<Voucher> Vouchers = new ArrayList<Voucher>();
-    public static final int userId = 1;
+    public static final int userId = 2;
+    //public String id = android.telephony.TelephonyManager.getDeviceId();
     public ArrayList<Voucher> getVouchers() {
         return Vouchers;
     }

@@ -233,7 +233,7 @@ public class MainActivity extends ActionBarActivity {
 
         String output;
         //String url = "https://gist.githubusercontent.com/abhshkrv/dedeb1b6a61b7430c34d/raw/eb87a2dce3bb41a2f9acb3a1694db1141a0468ef/gistfile1.txt";
-        String url = "http://tapmoney-abhshkrv.c9.io/get_vouchers.php";
+        String url = "http://pure-harbor-29950.herokuapp.com/get_vouchers.php";
         try {
             DefaultHttpClient httpClient = new DefaultHttpClient();
             HttpGet httpGet = new HttpGet(url);

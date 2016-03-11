@@ -123,7 +123,7 @@ public class NfcSendActivity extends ActionBarActivity  implements NfcAdapter.Cr
         mHandler.obtainMessage(MESSAGE_SENT).sendToTarget();
 
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("http://tapmoney-abhshkrv.c9.io/send_voucher_hack.php");
+        HttpPost httppost = new HttpPost("http://pure-harbor-29950.herokuapp.com/send_voucher_hack.php");
 
         try {
             // Add your data

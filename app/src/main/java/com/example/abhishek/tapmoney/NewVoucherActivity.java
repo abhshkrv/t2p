@@ -41,7 +41,7 @@ public class NewVoucherActivity extends ActionBarActivity {
     public void postNewVoucher() {
         // Create a new HttpClient and Post Header
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("http://tapmoney-abhshkrv.c9.io/create_voucher.php");
+        HttpPost httppost = new HttpPost("http://pure-harbor-29950.herokuapp.com/create_voucher.php");
 
         try {
             // Add your data
